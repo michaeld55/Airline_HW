@@ -1,6 +1,7 @@
 public enum PlaneType {
 
-    BOEING747(200, 500);
+    BOEING747(200, 500),
+    AIRBUSA380(300, 600);
 
     private final int capacity, weightLimit;
     PlaneType(int capacity, int weightLimit) {

@@ -36,7 +36,7 @@ public class FlightMangerTest {
     }
 
     @Test
-    public void canRemaingWeight(){
+    public void canReamingWeight(){
         flight.addPassenger(passenger);
         assertEquals(247, flightManger.getAvailableWeight());
     }

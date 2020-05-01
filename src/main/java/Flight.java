@@ -6,13 +6,13 @@ import java.util.*;
 
 public class Flight {
 
-    private ArrayList<Passenger> passengers;
-    private Plane plane;
-    private String flightNumber;
-    private String destinationAirport;
-    private String departureAirport;
+    private final ArrayList<Passenger> passengers;
+    private final Plane plane;
+    private final String flightNumber;
+    private final String destinationAirport;
+    private final String departureAirport;
     private Date dateTime;
-    private ArrayList<Integer> seatNumbers;
+    private final ArrayList<Integer> seatNumbers;
 
 
     public Flight(Plane plane, String flightNumber, String destinationAirport, String departureAirport, String time) {
@@ -34,8 +34,7 @@ public class Flight {
 
             seatNumbers.add(i);
         }
-        Collections.shuffle(seatNumbers);
-        this.passengers = new ArrayList<Passenger>();
+        this.passengers = new ArrayList<>();
     }
 
     public Plane getPlane() {
@@ -54,7 +53,7 @@ public class Flight {
     }
 
     private int getSeatNumber() {
-
+        Collections.shuffle(seatNumbers);
         int randomSeat = seatNumbers.get(0);
         seatNumbers.remove(0);
         return randomSeat;
@@ -82,6 +81,7 @@ public class Flight {
 
     public String getFlightTime() {
         DateFormat flightTime = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
         String newTime;
         return newTime = flightTime.format(this.dateTime);
     }

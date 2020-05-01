@@ -2,9 +2,8 @@ import java.util.ArrayList;
 
 public class FlightManger {
 
-    private int reservedWeight;
-    private Plane plane;
-    private ArrayList<Passenger> passengers;
+    private final Plane plane;
+    private final ArrayList<Passenger> passengers;
 
     public FlightManger(Flight flight){
         this.plane = flight.getPlane();
@@ -12,8 +11,7 @@ public class FlightManger {
     }
 
     public int getReservedWeight(){
-        reservedWeight = plane.getWeightLimit() / 2;
-        return reservedWeight;
+        return plane.getWeightLimit() / 2;
     }
 
     public Plane getPlane() {
@@ -27,14 +25,12 @@ public class FlightManger {
     public int getBagCount(){
         int total = 0;
         for (Passenger passenger: passengers) {
-
             total += passenger.getBags();
         }
         return total;
     }
 
     public int getAvailableWeight() {
-
         return getReservedWeight() - getBagCount();
     }
 }

@@ -1,7 +1,7 @@
 public class Passenger {
 
-    private String name;
-    private int bags;
+    private final String name;
+    private final int bags;
     private Flight flight;
     private int seatNumber;
 

@@ -3,21 +3,18 @@ import org.junit.Test;
 
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
     private Flight flight;
     private Passenger passenger;
-    private Passenger passenger1;
-    private Plane plane;
 
     @Before
     public void before(){
 
         passenger = new Passenger("bob", 3);
-        plane = new Plane(PlaneType.BOEING747);
+        Plane plane = new Plane(PlaneType.BOEING747);
         flight = new Flight(plane,"FR756", "EDI", "GLA", "18:00:00");
     }
 
@@ -45,7 +42,7 @@ public class FlightTest {
     }
 
     @Test
-    public void canGetRemaingSeats(){
+    public void canGetReamingSeats(){
         flight.addPassenger(passenger);
         assertEquals(199, flight.getEmptySeats());
     }
@@ -66,20 +63,21 @@ public class FlightTest {
     @Test
     public void doesntDoubleBook(){
         for (int i = 0; i < 200; i++) {
-            passenger1 = new Passenger("Joe", 1);
+            Passenger passenger1 = new Passenger("Joe", 1);
             flight.addPassenger(passenger1);
         }
         ArrayList<Passenger> testPassengers = flight.getPassengers();
 
-        ArrayList<Integer> duplicateCheck= new ArrayList<>();
+        ArrayList<Integer> duplicateCheck = new ArrayList<>();
         for (Passenger passenger: testPassengers) {
             if(!duplicateCheck.contains(passenger.getSeatNumber())){
                 duplicateCheck.add(passenger.getSeatNumber());
-            }else{
             }
 
         }
 
         assertEquals( testPassengers.size(), duplicateCheck.size());
+        assertEquals(200, flight.getPassengerCount());
+        assertEquals(0, flight.getEmptySeats());
     }
 }
